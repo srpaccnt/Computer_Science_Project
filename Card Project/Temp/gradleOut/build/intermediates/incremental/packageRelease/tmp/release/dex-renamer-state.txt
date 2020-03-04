@@ -1,0 +1,4 @@
+#Tue Mar 03 18:40:49 GMT 2020
+base.0=C\:\\Users\\user\\Desktop\\Card Project\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex
