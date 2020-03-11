@@ -11,6 +11,7 @@ TagManager:
   - c4
   - swap
   - continue
+  - get
   layers:
   - Default
   - TransparentFX

@@ -6,28 +6,16 @@ using UnityEngine.UI;
 public class MySquare : MonoBehaviour
 {
     public GameObject prefab;
-    List<GameObject> cardArray;
     GameObject c1, c2, c3, c4;
     GameObject ib1,ib2;
     Button bf,bc;
-    GameObject cpuCard;
+     GameObject cpuCard;
     GameObject aG;
+    Deck deck;
+    List<GameObject> aDeck;
     // Start is called before the first frame update
     void Start()
     {
-        int tempInt = Random.Range(0, 53);
-        cardArray = new List<GameObject>();
-        Transform testObject = FindObjectOfType<Deck>().transform.GetChild(tempInt);
-        for (int i = 0; i <53; i++) {
-            cardArray.Add(FindObjectOfType<Deck>().transform.GetChild(i).gameObject);
-        }
-        GameObject testObject2 = cardArray[tempInt];
-        cardArray.Remove(testObject2);
-
-
-
-        prefab = testObject2;
-        cpuCard = FindObjectOfType<CPU>().GetCpu();
         
     }
 
@@ -38,7 +26,10 @@ public class MySquare : MonoBehaviour
     }
 
     public void MakeSquare() {
-        aG = Instantiate(prefab) as GameObject;
+        aDeck = FindObjectOfType<Deck>().cardArray;
+        aG = FindObjectOfType<Deck>().GetCard();
+        int tempInt = Random.Range(0, 3);
+
         aG.transform.position = new Vector3(0f, -2F,0F);
         aG.transform.localScale = new Vector3(42f, 36f, 10f);
         aG.transform.rotation = Quaternion.Euler(190F, 0F, 0F);
@@ -86,8 +77,7 @@ public class MySquare : MonoBehaviour
     public void Continue() {
         cpuCard = FindObjectOfType<CPU>().GetCpu();
         Destroy(aG);
-        int tempInt = Random.Range(0, cardArray.Count);
-        GameObject swappedCard = cardArray[tempInt];
+        GameObject swappedCard = FindObjectOfType<Deck>().GetCard();
         swappedCard.transform.position = new Vector3(0f, -2F, 0F);
         swappedCard.transform.localScale = new Vector3(42f, 36f, 10f);
         swappedCard.transform.rotation = Quaternion.Euler(190F, 0F, 0F);
