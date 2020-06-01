@@ -23,7 +23,9 @@ public class Deck : MonoBehaviour
 
     public GameObject GetCard()
     {
-        randomInt = Random.Range(0, cardArray.Count);
+        randomInt = Random.Range(0, FindObjectOfType<Deck>().cardArray.Count);
+        Debug.Log("Size is " + FindObjectOfType<Deck>().transform.childCount);
+        Debug.Log("Index card is " + randomInt);
         randomCard = cardArray[randomInt];
         cardArray.Remove(randomCard);
         return randomCard;
